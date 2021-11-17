@@ -1,0 +1,28 @@
+<odoo>
+	<data>
+		<record id="res_config_settings_view_form_inherited"
+			model="ir.ui.view">
+			<field name="name">res.config.settings.form.inherited</field>
+			<field name="model">res.config.settings</field>
+			<field name="inherit_id" ref="hr.res_config_settings_view_form" />
+			<field name="arch" type="xml">
+
+				<xpath expr="//div[@data-key='hr']//div[1]" position="inside">
+					<div class="col-12 col-lg-6 o_setting_box">
+						<div class="o_setting_right_pane">
+							<label for="employee_ids" />
+							<div class="content-group">
+								<div class="mt16">
+									<field name="employee_ids" widget="many2many_tags" groups="hr.group_hr_manager"
+										domain="[('work_email', '!=', False)]" />
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+				</xpath>
+			</field>
+		</record>
+	</data>
+</odoo>

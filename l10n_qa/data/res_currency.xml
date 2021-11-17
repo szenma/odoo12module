@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+	<record id="base.QAR" model="res.currency">
+		<field name="rounding">0.01</field>
+	</record>
+	
+	<record id="base.USD" model="res.currency">
+		<field name="rounding">0.01</field>
+	</record>
+
+	<record id="curancy_rate_1" model="res.currency.rate">
+		<field name="rate">1</field>
+		<field name="currency_id" ref="base.QAR" />
+	</record>
+
+	<record id="curancy_rate_2" model="res.currency.rate">
+		<field name="rate">3.75</field>
+		<field name="currency_id" ref="base.USD" />
+	</record>
+</odoo>

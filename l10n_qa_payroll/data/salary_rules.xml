@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<!-- Allowances salary Rules -->
+		<record id="hr_rule_housing" model="hr.salary.rule">
+			<field name="name">Housing Allowance Salary Rule</field>
+			<field name="sequence" eval="2" />
+			<field name="code">HOUSING</field>
+			<field name="category_id" ref="hr_payroll.ALW" />
+			<field name="condition_select">python</field>
+			<field name="condition_python">result = contract.housing_allowance >0</field>
+			<field name="amount_select">code</field>
+			<field name="amount_python_compute"><![CDATA[
+result = contract.housing_allowance - ((contract.housing_allowance/30) *payslip.unpaid_days)
+
+ ]]></field>
+		</record>
+
+
+		<record id="hr_rule_transportation" model="hr.salary.rule">
+			<field name="name">Transportation Allowance Salary Rule</field>
+			<field name="sequence" eval="3" />
+			<field name="code">TRANSPORTATION</field>
+			<field name="appears_on_payslip">True</field>
+			<field name="category_id" ref="hr_payroll.ALW" />
+			<field name="condition_select">python</field>
+			<field name="condition_python">result = contract.transportation_allowance >0
+			</field>
+			<field name="amount_select">code</field>
+			<field name="amount_python_compute"><![CDATA[
+result = contract.transportation_allowance - ((contract.transportation_allowance/30) *payslip.unpaid_days)
+
+
+ ]]></field>
+		</record>
+
+
+
+		<record id="hr_rule_communication" model="hr.salary.rule">
+			<field name="name">Communication Allowance Salary Rule</field>
+			<field name="sequence" eval="4" />
+			<field name="code">COMMUNICATION</field>
+			<field name="appears_on_payslip">True</field>
+			<field name="category_id" ref="hr_payroll.ALW" />
+			<field name="condition_select">python</field>
+			<field name="condition_python">result = contract.communication_allowance >0
+			</field>
+			<field name="amount_select">code</field>
+			<field name="amount_python_compute"><![CDATA[
+result = contract.communication_allowance - ((contract.communication_allowance/30) *payslip.unpaid_days)
+
+ ]]></field>
+		</record>
+
+
+		<record id="hr_rule_social" model="hr.salary.rule">
+			<field name="name">Social Allowance Salary Rule</field>
+			<field name="sequence" eval="5" />
+			<field name="code">SOCIAL</field>
+			<field name="appears_on_payslip">True</field>
+			<field name="category_id" ref="hr_payroll.ALW" />
+			<field name="condition_select">python</field>
+			<field name="condition_python">result = contract.social_allowance >0</field>
+			<field name="amount_select">code</field>
+			<field name="amount_python_compute"><![CDATA[
+result = contract.social_allowance - ((contract.social_allowance/30) *payslip.unpaid_days)
+
+ ]]></field>
+		</record>
+
+		<record id="hr_payroll.hr_rule_net" model="hr.salary.rule">
+			<field name="amount_python_compute"><![CDATA[
+result =  categories.BASIC + categories.ALW - categories.DED
+ ]]></field>
+
+		</record>
+
+		<record id="hr_rule_food" model="hr.salary.rule">
+			<field name="name">Food Allowance Salary Rule</field>
+			<field name="sequence" eval="6" />
+			<field name="code">FOOD</field>
+			<field name="appears_on_payslip">True</field>
+			<field name="category_id" ref="hr_payroll.ALW" />
+			<field name="condition_select">python</field>
+			<field name="condition_python">result = contract.food_allowance >0</field>
+			<field name="amount_select">code</field>
+			<field name="amount_python_compute"><![CDATA[
+result = contract.food_allowance - ((contract.food_allowance/30) *payslip.unpaid_days)
+
+
+ ]]></field>
+		</record>
+
+
+		<record id="hr_rule_other" model="hr.salary.rule">
+			<field name="name">Other Allowance Salary Rule</field>
+			<field name="sequence" eval="7" />
+			<field name="code">OTHER</field>
+			<field name="appears_on_payslip">True</field>
+			<field name="category_id" ref="hr_payroll.ALW" />
+			<field name="condition_select">python</field>
+			<field name="condition_python">result = contract.other_allowance >0</field>
+			<field name="amount_select">code</field>
+			<field name="amount_python_compute"><![CDATA[
+result = contract.other_allowance - ((contract.other_allowance/30) *payslip.unpaid_days)
+
+ ]]></field>
+		</record>
+
+		<record id="hr_rule_other_ded" model="hr.salary.rule">
+			<field name="name">Other deductions</field>
+			<field name="sequence" eval="101" />
+			<field name="code">DED</field>
+			<field name="appears_on_payslip">True</field>
+			<field name="category_id" ref="hr_payroll.DED" />
+			<field name="condition_select">python</field>
+			<field name="condition_python">result = inputs.DED.amount>0</field>
+			<field name="amount_select">code</field>
+			<field name="amount_python_compute"><![CDATA[
+result = (inputs.DED.amount)
+ ]]></field>
+		</record>
+
+		<record id="hr_payroll.hr_rule_basic" model="hr.salary.rule">
+			<field name="amount_python_compute"><![CDATA[
+result = contract.wage - ((contract.wage/30) *payslip.unpaid_days)
+ ]]></field>
+		</record>
+
+		<record id="hr_rule_input_ded_ded" model="hr.rule.input">
+			<field name="code">DED</field>
+			<field name="name">Other Deductions</field>
+			<field name="input_id" ref="hr_rule_other_ded" />
+		</record>
+
+	</data>
+</odoo>

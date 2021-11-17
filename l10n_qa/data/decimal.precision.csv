@@ -1,0 +1,5 @@
+id,digits,name
+product.decimal_price,2,Product Price
+product.decimal_discount,2,Discount
+product.decimal_product_uom,0,Product Unit of Measure
+account,3,Account

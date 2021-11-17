@@ -1,0 +1,60 @@
+<odoo>
+	<data>
+		<record id="view_employee_form_inherited" model="ir.ui.view">
+			<field name="name">hr.employee.form.inherited</field>
+			<field name="model">hr.employee</field>
+			<field name="inherit_id" ref="hr.view_employee_form" />
+			<field name="arch" type="xml">
+				<field name="identification_id" position="replace">
+					<field name="qid" />
+				</field>
+				<field name="qid" position="after">
+					<field name="qid_expiry_date" />
+				</field>
+
+				<field name="passport_id" position="after">
+					<field name="passport_expiry_date" />
+				</field>
+				<field name="bank_account_id" position="replace" />
+				<xpath
+					expr="//page[@name='personal_information']//group[1]//group[1]"
+					position="inside">
+					<field name="driving_license_number" />
+					<field name="driving_license_issuing_date" />
+					<field name="driving_license_expiry_date" />
+					<field name="health_care_card_no" />
+					<field name="health_care_card_expiry_date" />
+					<field name="bank_account_id" />
+				</xpath>
+			</field>
+		</record>
+
+		<record id="view_employee_search_inherited" model="ir.ui.view">
+			<field name="name">hr.employee.form.inherited</field>
+			<field name="model">hr.employee</field>
+			<field name="inherit_id" ref="hr.view_employee_filter" />
+			<field name="arch" type="xml">
+				<filter name="activities_upcoming_all" position="after">
+					<filter string="QID ends in 30 days" name="qid_end_soon"
+						domain="[('qid_expiry_date', '&lt;=', (datetime.date.today() + relativedelta(days=30)).strftime('%Y-%m-%d'))]" />
+
+					<filter string="Passport ends in 30 days"
+						name="passport_expiry_date"
+						domain="[('passport_expiry_date', '&lt;=', (datetime.date.today() + relativedelta(days=30)).strftime('%Y-%m-%d'))]" />
+
+					<filter string="Driving license ends in 30 days"
+						name="driving_license_expiry_date"
+						domain="[('driving_license_expiry_date', '&lt;=', (datetime.date.today() + relativedelta(days=30)).strftime('%Y-%m-%d'))]" />
+
+					<filter string="Health card ends in 30 days"
+						name="health_care_card_expiry_date"
+						domain="[('health_care_card_expiry_date', '&lt;=', (datetime.date.today() + relativedelta(days=30)).strftime('%Y-%m-%d'))]" />
+				</filter>
+			</field>
+
+		</record>
+
+
+
+	</data>
+</odoo>

@@ -1,0 +1,3 @@
+id,date_format,time_format,translatable,active
+base.lang_en,%d/%m/%Y,%H:%M:%S,True,True
+base.lang_ar_SY,%d/%m/%Y,%H:%M:%S,True,True

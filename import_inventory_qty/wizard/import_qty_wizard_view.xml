@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+
+		<record id="view_import_qty_wizard" model="ir.ui.view">
+			<field name="name">Import Quantities</field>
+			<field name="model">import.qty.wizard</field>
+			<field name="arch" type="xml">
+				<form>
+					<div class="alert alert-warning text-center no_print">
+						<span>Download and use this template in order to be able to import your data</span>
+						<br/>
+						<span>
+							<a href="/import_inventory_qty/static/xls/import-quanity.xls">Download Template</a>
+						</span>
+						<br/>
+					</div>
+					<group >
+						<group>
+							<field name="name" />
+							<field name="data" filename="data_fname" widget="file" />
+						</group>
+						<group>
+							<field name="location_id" options="{'no_open':True,'no_create':True,'no_create_edit':True}"
+								domain="[('usage','=','internal')]" />
+							<field name="is_header" />
+						</group>
+						<field name="data_fname" invisible="1" />
+					</group>
+					<footer>
+						<button name="import_qty" string="_Import" type="object"
+							class="oe_highlight" />
+						or
+						<button string="Cancel" class="oe_link" special="cancel" />
+					</footer>
+				</form>
+			</field>
+		</record>
+
+		<record id="action_import_qty_wizard"
+			model="ir.actions.act_window">
+			<field name="name">Import Quantities</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">import.qty.wizard</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">form</field>
+			<field name="target">new</field>
+		</record>
+
+		<menuitem action="action_import_qty_wizard"
+			id="menu_import_qty_wizard"
+			parent="stock.menu_stock_inventory_control"
+			groups="stock.group_stock_manager" />
+
+
+	</data>
+</odoo>
