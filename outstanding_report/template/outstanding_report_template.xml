@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+
+	<report id="outstanding_report" model="account.invoice"
+		string="Outstanding Report" report_type="qweb-pdf" menu="False"
+		name="outstanding_report.invoice_outstanding_report"
+		file="outstanding_report.invoice_outstanding_report" />
+
+	<record id="outstanding_report" model="ir.actions.report">
+		<field name="paperformat_id"
+			ref="outstanding_report_paperformat" />
+	</record>
+
+
+	<template id="invoice_outstanding_report">
+		<t t-if="not o" t-set="o" t-value="doc" />
+		<t t-if="not company">
+			<t t-if="company_id">
+				<t t-set="company" t-value="company_id" />
+			</t>
+			<t t-elif="o and 'company_id' in o">
+				<t t-set="company" t-value="o.company_id.sudo()" />
+			</t>
+			<t t-else="else">
+				<t t-set="company" t-value="res_company" />
+			</t>
+		</t>
+		<t t-set="data_report_landscape" t-value="True" />
+		<t t-call="web.html_container">
+			<t t-call="outstanding_report.outstanding_report_layout">
+				<div class="page"
+					style="margin-top:0px !important;margin-bottom:0px !important">
+					<div style="margin:0px !important;" class="text-center mt0">
+						<h4>Outstanding Receivable Report</h4>
+					</div>
+					<div class="row mt32">
+						<div class="col-9">
+							<strong style="font-size:20px">Customer:</strong>
+							<span style="font-size:20px" t-esc="data['partner']" />
+						</div>
+						<div class="col-3 text-right">
+							<div>
+								<strong>From:</strong>
+								<span t-esc="data['date_from']" />
+							</div>
+							<div>
+								<strong class="">To:</strong>
+								<span style="margin-left:18px" t-esc="data['date_to']" />
+							</div>
+						</div>
+					</div>
+					<div class="row">
+
+						<table style="font-size:15px;"
+							class="table table-sm o_main_table" name="invoice_line_table">
+							<thead>
+								<tr>
+									<th class="text-left">
+										<span>Month</span>
+									</th>
+									<th class="text-left">
+										<span>INV Date</span>
+									</th>
+									<th class="text-left">
+										<span>INV #</span>
+									</th>
+									<th class="text-left">
+										<span>Client Ref</span>
+									</th>
+									<th class="text-left">
+										<span>Shipping Address</span>
+									</th>
+
+									<th class="text-left">
+										<span>Sky Ref.</span>
+									</th>
+
+									<th class="text-left">
+										<span>Days</span>
+									</th>
+
+									<th class="text-right">
+										<span>Bill Amt</span>
+									</th>
+									<th class="text-right">
+										<span>Payment</span>
+									</th>
+
+
+									<th class="text-right">
+										<span>Returns</span>
+									</th>
+
+
+									<th class="text-right">
+										<span>Rebate</span>
+									</th>
+
+									<th class="text-right">
+										<span>Balance</span>
+									</th>
+
+
+									<th class="text-left">
+										<span>Due Date</span>
+									</th>
+								</tr>
+							</thead>
+							<tbody>
+								<t t-foreach="data['invoices_data']" t-as="invoice">
+
+									<tr>
+										<td style="padding-top:4px;padding-bottom:4px;">
+											<span
+												t-esc="data['invoices_data'][invoice]['month_name']" />
+										</td>
+										<td style="padding-top:4px;padding-bottom:4px;">
+											<span
+												t-esc="data['invoices_data'][invoice]['invoice_date']" />
+										</td>
+										<td style="padding-top:4px;padding-bottom:4px;"
+											class="text-right">
+											<span
+												t-esc="data['invoices_data'][invoice]['invoice_number']" />
+										</td>
+										<td style="padding-top:4px;padding-bottom:4px;">
+											<span
+												t-esc="data['invoices_data'][invoice]['cllien_ref']" />
+										</td>
+										<td style="padding-top:4px;padding-bottom:4px;">
+											<span
+												t-esc="data['invoices_data'][invoice]['shipping_address']" />
+										</td>
+										<td style="padding-top:4px;padding-bottom:4px;">
+											<span t-esc="data['invoices_data'][invoice]['sky_ref']" />
+										</td>
+										<td style="padding-top:4px;padding-bottom:4px;">
+											<span t-esc="data['invoices_data'][invoice]['days']" />
+										</td>
+										<td style="padding-top:4px;padding-bottom:4px;"
+											class="text-right">
+											<span
+												t-esc="data['invoices_data'][invoice]['bill_amount']"
+												t-options='{"widget": "float", "decimal_precision": "Product Price"}' />
+										</td>
+										<td style="padding-top:4px;padding-bottom:4px;"
+											class="text-right">
+											<span
+												t-esc="data['invoices_data'][invoice]['payment']"
+												t-options='{"widget": "float", "decimal_precision": "Product Price"}' />
+										</td>
+										<td style="padding-top:4px;padding-bottom:4px;"
+											class="text-right">
+											<span t-esc="data['invoices_data'][invoice]['returns']"
+												t-options='{"widget": "float", "decimal_precision": "Product Price"}' />
+										</td>
+										<td style="padding-top:4px;padding-bottom:4px;"
+											class="text-right">
+											<span t-esc="data['invoices_data'][invoice]['rebate']"
+												t-options='{"widget": "float", "decimal_precision": "Product Price"}' />
+										</td>
+										<td style="padding-top:4px;padding-bottom:4px;"
+											class="text-right">
+											<span t-esc="data['invoices_data'][invoice]['balance']"
+												t-options='{"widget": "float", "decimal_precision": "Product Price"}' />
+										</td>
+										<td style="padding-top:4px;padding-bottom:4px;">
+											<span t-esc="data['invoices_data'][invoice]['due_date']" />
+										</td>
+									</tr>
+								</t>
+							</tbody>
+						</table>
+					</div>
+					<div class="clearfix">
+						<div id="total" class="row">
+							<div class="col-4 offset-8">
+								<table class="table table-sm;page-break-inside: avoid;">
+									<tr class="border-black o_subtotal" style="">
+										<td style="padding-top:4px;padding-bottom:4px;">
+											<strong class="ml4">Total Amount</strong>
+										</td>
+										<td style="padding-top:4px;padding-bottom:4px;"
+											class="text-right">
+											<span t-esc="data['total']['total_invoice_amount']"
+												t-options='{"widget": "float", "decimal_precision": "Product Price"}'></span>
+										</td>
+									</tr>
+									
+									<tr class="border-black o_subtotal" style="">
+										<td style="padding-top:4px;padding-bottom:4px;">
+											<strong class="ml4">Less Returns</strong>
+										</td>
+										<td style="padding-top:4px;padding-bottom:4px;"
+											class="text-right">
+											<span t-esc="data['total']['total_refund']"
+												t-options='{"widget": "float", "decimal_precision": "Product Price"}'></span>
+										</td>
+									</tr>
+									<tr class="border-black o_subtotal" style="">
+										<td style="padding-top:4px;padding-bottom:4px;">
+											<strong class="ml4">Less Rebates </strong>
+										</td>
+										<td style="padding-top:4px;padding-bottom:4px;"
+											class="text-right">
+											<span t-esc="data['total']['total_rebate']"
+												t-options='{"widget": "float", "decimal_precision": "Product Price"}'></span>
+										</td>
+									</tr>
+									<tr class="border-black o_subtotal" style="">
+										<td style="padding-top:4px;padding-bottom:4px;">
+											<strong class="ml4">Outstanding Balance </strong>
+										</td>
+										<td style="padding-top:4px;padding-bottom:4px;"
+											class="text-right">
+											<span t-esc="data['total']['total_invoice_balance']"
+												t-options='{"widget": "float", "decimal_precision": "Product Price"}'></span>
+										</td>
+									</tr>
+								</table>
+							</div>
+						</div>
+					</div>
+
+					<div class="clearfix mt32">
+						<div id="total" class="row">
+							<div class="col-4 offset-8">
+								<table class="table table-sm;page-break-inside: avoid;">
+									<t t-foreach="data['per_month_balances']" t-as="month">
+										<tr class="border-black o_subtotal" style="">
+											<td style="padding-top:4px;padding-bottom:4px;">
+												<strong>Outstanding From</strong>
+												<strong class="ml4" t-esc="month" />
+											</td>
+											<td style="padding-top:4px;padding-bottom:4px;"
+												class="text-right">
+												<span t-esc="data['per_month_balances'][month]"
+													t-options='{"widget": "float", "decimal_precision": "Product Price"}'></span>
+											</td>
+										</tr>
+									</t>
+								</table>
+
+							</div>
+						</div>
+
+					</div>
+
+				</div>
+			</t>
+		</t>
+	</template>
+
+
+</odoo>

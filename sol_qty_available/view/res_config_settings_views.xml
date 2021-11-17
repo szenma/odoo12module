@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+		<record id="action_company_sol_qty_available_settings" model="ir.actions.act_window">
+            <field name="name">SoL Company Settings</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sale.qty.other.company</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree</field>
+            <field name="help" type="html">
+              <p class="o_view_nocontent_smiling_face">
+                Create a new company
+              </p><p>
+                Create and manage the companies that will be managed by Odoo from here. Shops or subsidiaries can be created and maintained from here.
+              </p>
+            </field>
+        </record>
+
+		<record id="res_config_settings_view_form" model="ir.ui.view">
+			<field name="name">res.config.settings.view.form.inherit</field>
+			<field name="model">res.config.settings</field>
+			<field name="priority" eval="10" />
+			<field name="inherit_id" ref="sale.res_config_settings_view_form" />
+			<field name="arch" type="xml">
+				<div data-key="sale_management" position="inside">
+					<h2>SOL Quantity</h2>
+					<div class="row mt16 o_settings_container">
+						<div class="col-xs-12 o_setting_box">
+							<div class="o_setting_right_pane">
+								<div class="content-group">
+									<label class="mt16" for="company_id"
+										string="Select the companies that you would like to see quantity for when creating a sale order" />
+									<span class="fa fa-lg fa-building-o" title="Values set here are company-specific." groups="base.group_multi_company"/>
+									<div class="mt16">
+										<button name="%(action_company_sol_qty_available_settings)d" icon="fa-arrow-right" type="action" string="Edit" class="btn-link"/>
+										<br/>
+										
+									</div>
+								</div>
+								
+								<!-- 								
+								<label class="mt16" for="sol_qty" />
+								<span class="fa fa-lg fa-building-o" title="Values set here are company-specific." groups="base.group_multi_company"/>
+								<div class="text-muted">
+									Select the quantity type you want to display for
+									products in sale
+									order lines
+								</div>
+								<div class="mt16">
+									<field name="sol_qty" class="o_light_label"
+										widget="radio" />
+								</div>
+								-->
+								<field name="sol_qty_other_company_ids" readonly="1" style="width:100%%">
+											<tree editable="bottom">
+												<field name="company_id"
+													options="{'no_create':True,'no_edit':True,'no_open':True}" />
+												<field name="warehouse_ids" widget="many2many_tags"/> 
+												<field name="show" />
+												
+												<field name="sol_qty" />
+											</tree>
+										</field>
+							</div>
+						</div>
+					</div>
+				</div>
+			</field>
+		</record>
+		
+        
+        <record id="view_sale_qty_other_company_tree" model="ir.ui.view">
+            <field name="name">sale.qty.other.company.tree</field>
+            <field name="model">sale.qty.other.company</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree editable="bottom">
+					<field name="company_id"  options="{'no_create':True,'no_edit':True,'no_open':True}" />
+					<field name="warehouse_ids" domain="[('company_id','=',company_id)]" options="{'no_create':True,'no_edit':True,'no_open':True}" widget="many2many_tags"/> 
+					<field name="short_code"/>
+					<field name="show" />
+					<field name="sol_qty" />
+				</tree>
+            </field>
+        </record>
+        
+         <!--   -->
+</odoo>

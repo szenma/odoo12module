@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+	<data>
+		<record id="stock_picking_type_form_view" model="ir.ui.view">
+			<field name="name">stock.picking.type.form.view</field>
+			<field name="model">stock.picking.type</field>
+			<field name="inherit_id" ref="stock.view_picking_type_form" />
+			<field name="arch" type="xml">
+				<field name="show_reserved" position="after">
+					<field name="to_invoice" />
+				</field>
+			</field>
+		</record>
+
+		<record id="stock_picking_form_view" model="ir.ui.view">
+			<field name="name">stock.picking.form.view</field>
+			<field name="model">stock.picking</field>
+			<field name="inherit_id" ref="stock.view_picking_form" />
+			<field name="arch" type="xml">
+				<field name="backorder_id" position="after">
+					<field name="to_invoice" invisible="1" />
+				</field>
+				<field name="partner_id" position="attributes">
+					<attribute name="attrs">{'required':[('to_invoice','=',True)]}
+					</attribute>
+				</field>
+			</field>
+		</record>
+	</data>
+</odoo>

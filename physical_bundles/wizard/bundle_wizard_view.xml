@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+
+		<record id="bundle_wizard_view" model="ir.ui.view">
+			<field name="name">bundle.wizard</field>
+			<field name="model">bundle.wizard</field>
+			<field name="arch" type="xml">
+				<form string="Bundles Management">
+					<group>
+						<group>
+							<field name="options" widget="radio" options="{'horizontal': true}" />
+							<field name="bundle_id" attrs="{'invisible':[('options','=','assembly')],'required':[('options','!=','assembly')]}"  options="{'no_create_edit': True,'no_create': True,'no_open':True}" />
+							<field name="product_id" attrs="{'readonly':[('options','!=','assembly')]}" force_save="1"  options="{'no_create_edit': True,'no_create': True,'no_open':True}" />
+							<field name="location_id" options="{'no_create_edit': True,'no_create': True,'no_open':True}"/>
+							<field name="quantity" />
+						</group>
+						<group>
+						</group>
+					</group>
+					<footer>
+						<button string="Confirm" name="action_confirm"
+							type="object" class="btn-primary" />
+						<button string="Cancel" class="btn-secondary"
+							special="cancel" />
+					</footer>
+				</form>
+			</field>
+		</record>
+
+		<record id="bundle_wizard_action" model="ir.actions.act_window">
+			<field name="name">Bundles Management</field>
+			<field name="res_model">bundle.wizard</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">form</field>
+			<field name="target">new</field>
+		</record>
+		<menuitem id="bundle_wizard_menu" parent="stock.menu_stock_warehouse_mgmt" sequence="10"
+			action="bundle_wizard_action" /> 
+
+
+	</data>
+</odoo>

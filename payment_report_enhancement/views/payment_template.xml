@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<template id="inherited_report_payment"
+			inherit_id="account.report_payment_receipt_document" priority="2000">
+			<xpath expr="//t[@t-call='web.external_layout']"
+				position="replace">
+				<t t-call="web.external_layout">
+					<t t-set="o" t-value="o.with_context(lang=lang)" />
+					<div class="page">
+						<h2>
+							<span t-if="o.payment_type  in ['outbound','transfer']">Payment Voucher: </span>
+							<span t-if="o.payment_type not in ['outbound','transfer']">Payment Receipt: </span>
+							<span t-field="o.name" />
+						</h2>
+						<div style="font-size:17px" class="mt16 row">
+							<div class="col-6">
+								<div class="mb16" t-if="o.partner_type">
+									<t t-if="o.partner_type == 'customer'">
+										<strong>Customer: </strong>
+									</t>
+									<t t-if="o.partner_type == 'supplier'">
+										<strong>Vendor: </strong>
+									</t>
+									<span t-field="o.partner_id" />
+								</div>
+								<div class="mb16" t-if="o.amount">
+									<strong>Payment Amount: </strong>
+									<span t-field="o.amount"
+										t-options="{'widget': 'monetary', 'display_currency': o.currency_id}" />
+								</div>
+								<div class="mb16" t-if="o.journal_id">
+									<strong>Payment Mode: </strong>
+									<span t-field="o.journal_id.name" />
+								</div>
+								<div class="mb16" t-if="o.destination_journal_id">
+									<strong>Transfer to: </strong>
+									<span t-field="o.destination_journal_id.name" />
+								</div>
+							</div>
+							<div class="col-6">
+								<div class="mb16" t-if="o.payment_date">
+									<strong>Payment Date: </strong>
+									<span t-field="o.payment_date" />
+								</div>
+								<div class="mb16" t-if="o.cheque_date">
+									<strong>Cheque Date: </strong>
+									<span t-field="o.cheque_date" />
+								</div>
+								<div class="mb16" t-if="o.communication">
+									<strong>Memo: </strong>
+									<span t-field="o.communication" />
+								</div>
+							</div>
+						</div>
+						<div style="font-size:17px" class="mt16">
+							<t t-foreach="o.get_journal_entries()" t-as="obj">
+								<table class="table-je mt16" width="100%">
+									<thead>
+										<tr>
+											<td>
+												Journal :
+												<span t-field="obj.journal_id.name" />
+											</td>
+											<td>
+												Number :
+												<span t-field="obj.name" />
+											</td>
+										</tr>
+									</thead>
+								</table>
+								<br />
+								<table class="table-je table-condensed" width="100%">
+									<thead>
+										<tr>
+											<th>Account</th>
+											<th>Memo</th>
+											<th style="text-align:right;">Debit</th>
+											<th style="text-align:right;">Credit</th>
+											<t t-foreach="o.get_columns(obj)" t-as="col">
+												<t t-if="o.get_columns(obj)[col][1]">
+													<th>
+														<span t-esc="col" />
+													</th>
+												</t>
+											</t>
+										</tr>
+									</thead>
+									<tbody class="invoice_tbody">
+
+										<tr
+											t-foreach="obj.line_ids.sorted(key=lambda line: line.id)"
+											t-as="line">
+											<td>
+												<span
+													t-esc="line.account_id.code+' - '+line.account_id.name" />
+											</td>
+											<td>
+												<span t-esc="line.name" />
+											</td>
+											<td class="text-right">
+												<span t-esc="line['debit']" t-options='{"widget": "float", "decimal_precision": "Account"}'/>
+											</td>
+											<td class="text-right">
+												<span t-esc="line['credit']" t-options='{"widget": "float", "decimal_precision": "Account"}' />
+											</td>
+											<t t-foreach="o.get_columns(obj)" t-as="col">
+												<t t-if="o.get_columns(obj)[col][1]">
+													<t t-if="col in ['Amount Currency']">
+														<td style="background-color:#ffffff;">
+															<span t-esc="line[o.get_columns(obj)[col][0]]" />
+														</td>
+													</t>
+													<t t-if="col not in ['Amount Currency']">
+														<td>
+															<span t-esc="line[o.get_columns(obj)[col][0]].name" />
+														</td>
+													</t>
+												</t>
+											</t>
+										</tr>
+										<tr>
+											<td style="border-top:2px solid;text-align:center;">
+											</td>
+											<td style="border-top:2px solid;text-align:right;">
+												<b>Total</b>
+											</td>
+											<td style="border-top:2px solid;" class="text-right">
+												<b>
+													<span  t-esc="o.get_total(obj)[obj.id]['debit']" t-options='{"widget": "float", "decimal_precision": "Account"}' />
+												</b>
+											</td>
+											<td style="border-top:2px solid;" class="text-right">
+												<b>
+													<span  t-esc="o.get_total(obj)[obj.id]['credit']"  t-options='{"widget": "float", "decimal_precision": "Account"}'/>
+												</b>
+											</td>
+											<t t-foreach="o.get_columns(obj)" t-as="col">
+												<t t-if="o.get_columns(obj)[col][1]">
+													<td style="border-top:2px solid;" />
+												</t>
+											</t>
+
+										</tr>
+									</tbody>
+								</table>
+							</t>
+						</div>
+						<div style="font-size:14px" class="mt160 row">
+							<div class="col-3">
+								<div class="mb32">
+									<span>Receiver Name:</span>
+								</div>
+								<div class="mb32">
+									<span>Mobile Number:</span>
+								</div>
+								<div class="mb32">
+									<span>ID Number:</span>
+								</div>
+								<div class="mb32">
+									<span>Signature:</span>
+								</div>
+							</div>
+							<div class="col-3">
+								<div class="mb32">
+									<span style="border-bottom:1px solid black;">
+										<span style="opacity: 0.0">.............................................
+										</span>
+									</span>
+								</div>
+								<div class="mb32">
+									<span style="border-bottom:1px solid black;">
+										<span style="opacity: 0.0">.............................................
+										</span>
+									</span>
+								</div>
+								<div class="mb32">
+									<span style="border-bottom:1px solid black;">
+										<span style="opacity: 0.0">.............................................
+										</span>
+									</span>
+								</div>
+								<div class="mb32">
+									<span style="border-bottom:1px solid black;">
+										<span style="opacity: 0.0">.............................................
+										</span>
+									</span>
+								</div>
+							</div>
+							<div class="col-3">
+								<div style="margin-left:2.5mm;" class="mb32">
+									<span style="padding-right:6.6mm;">Prepared By:</span>
+								</div>
+								<div style="margin-left:2.5mm;" class="mb32">
+									<span style="padding-right:6.6mm;">Verified By:</span>
+								</div>
+								<div style="margin-left:2.5mm;" class="mb32">
+									<span style="padding-right:6.6mm;">Approved By:</span>
+								</div>
+							</div>
+							<div class="col-3">
+								<div class="mb32">
+									<span t-field="o.sudo().create_uid.name">
+									</span>
+								</div>
+								<div class="mb32">
+									<span style="border-bottom:1px solid black;">
+										<span style="opacity: 0.0">.............................................
+										</span>
+									</span>
+								</div>
+								<div class="mb32">
+									<span style="border-bottom:1px solid black;">
+										<span style="opacity: 0.0">.............................................
+										</span>
+									</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</t>
+			</xpath>
+		</template>
+
+		<template id="report_payment_receipt_inherit">
+			<xpath expr="//t[@t-set='lang']" position="replace">
+				<t t-set="lang" t-value="o.partner_id.lang or o.env.user.lang" />
+			</xpath>
+		</template>
+
+	</data>
+</odoo>

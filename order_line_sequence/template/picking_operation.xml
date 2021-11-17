@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+	<data>
+		<template id="picking_report_inherit"
+			inherit_id="stock.report_picking" priority="2000">
+			<xpath
+				expr="//table[2]//tbody//t[@t-foreach='o.move_ids_without_package.sorted(key=lambda m: m.product_id.id)']"
+				position="before">
+				<t t-set="i" t-value="0" />
+			</xpath>
+			<xpath expr="//table[2]//thead//tr[1]//th[1]" position="before">
+				<th class="text-left">#</th>
+			</xpath>
+			<xpath expr="//table[2]//tbody//tr[1]//td[1]" position="before">
+				<td class="text-right">
+				<t t-set="i" t-value="i+1" />
+					<span t-esc="i" />
+					
+				</td>
+			</xpath>
+		</template>
+
+		<template id="delivery_template_inherit"
+			inherit_id="stock.report_delivery_document" priority="2000">
+
+			<xpath expr="//table[2]//tbody//tr[1]" position="before">
+				<t t-set="i" t-value="0" />
+			</xpath>
+			<xpath expr="//table[2]//thead//tr[1]//th[1]" position="before">
+				<th class="text-left">#</th>
+			</xpath>
+			<xpath expr="//table[2]//tbody//tr[1]//td[1]" position="before">
+				<td class="text-right">
+					<t t-set="i" t-value="i+1" />
+					<span t-esc="i" />
+				</td>
+			</xpath>
+			
+			<xpath expr="//table[3]//tbody//tr[@t-foreach='o.move_line_ids']" position="before">
+					<t t-set="j" t-value="0" />
+			</xpath>
+			
+			<xpath expr="//table[3]//thead//tr[1]//th[1]" position="before">
+				<th class="text-left">#</th>
+			</xpath>
+			<xpath expr="//table[3]//tbody//tr[1]//td[1]" position="before">
+				<td class="text-right">
+					<t t-set="j" t-value="j+1" />
+					<span t-esc="j" />
+				</td>
+			</xpath>
+		</template>
+	</data>
+</odoo>

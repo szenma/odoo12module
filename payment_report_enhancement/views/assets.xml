@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+
+<odoo>
+	<data>
+		<template id="assets_common"
+			inherit_id="web.report_assets_common">
+			<xpath expr="." position="inside">
+				<link rel="stylesheet" type="text/scss"
+					href="/payment_report_enhancement/static/src/css/layout_style.scss" />
+			</xpath>
+		</template>
+		
+	</data>
+</odoo>

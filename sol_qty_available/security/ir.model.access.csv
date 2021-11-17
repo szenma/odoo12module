@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+qty_other_company_user,qty_other_company,model_sale_qty_other_company,base.group_user,1,0,0,0
+qty_other_company,qty_other_company,model_sale_qty_other_company,base.group_system,1,1,1,1

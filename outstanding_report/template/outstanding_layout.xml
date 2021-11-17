@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+	
+	<template id="outstanding_report_layout" inherit_id="web.external_layout_background" primary="True" ></template>
+	
+
+	</data>
+</odoo>

@@ -1,0 +1,112 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* payment_report_enhancement
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-01-09 10:29+0000\n"
+"PO-Revision-Date: 2020-01-09 10:29+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: payment_report_enhancement
+#: model_terms:ir.ui.view,arch_db:payment_report_enhancement.inherited_report_payment
+msgid "<span style=\"padding-right:6.6mm;\">Approved By:</span>"
+msgstr "<span style=\"padding-right:6.6mm;\">أعتمدت بواسطة:</span>"
+
+#. module: payment_report_enhancement
+#: model_terms:ir.ui.view,arch_db:payment_report_enhancement.inherited_report_payment
+msgid "<span style=\"padding-right:6.6mm;\">Prepared By:</span>"
+msgstr "<span style=\"padding-right:6.6mm;\">أعدت بواسطة:</span>"
+
+#. module: payment_report_enhancement
+#: model_terms:ir.ui.view,arch_db:payment_report_enhancement.inherited_report_payment
+msgid "<span style=\"padding-right:6.6mm;\">Verified By:</span>"
+msgstr "<span style=\"padding-right:6.6mm;\">دققت بواسطة:</span>"
+
+#. module: payment_report_enhancement
+#: model_terms:ir.ui.view,arch_db:payment_report_enhancement.inherited_report_payment
+msgid "<span>ID Number:</span>"
+msgstr "<span>رقم البطاقة الشخصية:</span>"
+
+#. module: payment_report_enhancement
+#: model_terms:ir.ui.view,arch_db:payment_report_enhancement.inherited_report_payment
+msgid "<span>Mobile Number:</span>"
+msgstr "<span>رقم الهاتف:</span>"
+
+#. module: payment_report_enhancement
+#: model_terms:ir.ui.view,arch_db:payment_report_enhancement.inherited_report_payment
+msgid "<span>Receiver Name:</span>"
+msgstr "<span>اسم المستلم:</span>"
+
+#. module: payment_report_enhancement
+#: model_terms:ir.ui.view,arch_db:payment_report_enhancement.inherited_report_payment
+msgid "<span>Signature:</span>"
+msgstr "\"<span>التوقيع:</span>"
+
+#. module: payment_report_enhancement
+#: model_terms:ir.ui.view,arch_db:payment_report_enhancement.inherited_report_payment
+msgid "<strong>Cheque Date: </strong>"
+msgstr ""
+
+#. module: payment_report_enhancement
+#: model_terms:ir.ui.view,arch_db:payment_report_enhancement.inherited_report_payment
+msgid "<strong>Customer: </strong>"
+msgstr "<strong>العميل: </strong>"
+
+#. module: payment_report_enhancement
+#: model_terms:ir.ui.view,arch_db:payment_report_enhancement.inherited_report_payment
+msgid "<strong>Memo: </strong>"
+msgstr "<strong>البيان: </strong>"
+
+#. module: payment_report_enhancement
+#: model_terms:ir.ui.view,arch_db:payment_report_enhancement.inherited_report_payment
+msgid "<strong>Payment Amount: </strong>"
+msgstr "<strong>مبلغ السداد: </strong>"
+
+#. module: payment_report_enhancement
+#: model_terms:ir.ui.view,arch_db:payment_report_enhancement.inherited_report_payment
+msgid "<strong>Payment Date: </strong>"
+msgstr "<strong>التاريخ: </strong>"
+
+#. module: payment_report_enhancement
+#: model_terms:ir.ui.view,arch_db:payment_report_enhancement.inherited_report_payment
+msgid "<strong>Payment Mode: </strong>"
+msgstr "<strong>طريقة الدفع: </strong>"
+
+#. module: payment_report_enhancement
+#: model_terms:ir.ui.view,arch_db:payment_report_enhancement.inherited_report_payment
+msgid "<strong>Transfer to: </strong>"
+msgstr ""
+
+#. module: payment_report_enhancement
+#: model_terms:ir.ui.view,arch_db:payment_report_enhancement.inherited_report_payment
+msgid "<strong>Vendor: </strong>"
+msgstr "<strong>المورد: </strong>"
+
+#. module: payment_report_enhancement
+#: model:ir.model.fields,field_description:payment_report_enhancement.field_account_payment__cheque_date
+msgid "Cheque Date"
+msgstr ""
+
+#. module: payment_report_enhancement
+#: model_terms:ir.ui.view,arch_db:payment_report_enhancement.inherited_report_payment
+msgid "Payment Receipt:"
+msgstr "سند قبض:"
+
+#. module: payment_report_enhancement
+#: model_terms:ir.ui.view,arch_db:payment_report_enhancement.inherited_report_payment
+msgid "Payment Voucher:"
+msgstr "سند صرف:"
+
+#. module: payment_report_enhancement
+#: model:ir.model,name:payment_report_enhancement.model_account_payment
+msgid "Payments"
+msgstr "المدفوعات"
+

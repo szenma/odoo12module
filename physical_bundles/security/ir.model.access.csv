@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+group_user,group_user,model_product_bundle_line,base.group_user,1,0,0,0
+product stock_manager ,product stock_manager ,model_product_bundle_line,stock.group_stock_manager,1,1,1,1
+bundle_history_,bundle_history_user,model_bundle_history,base.group_user,1,1,1,0
