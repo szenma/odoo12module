@@ -1,0 +1,196 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* account_receipt_payment
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-03-16 14:40+0000\n"
+"PO-Revision-Date: 2020-03-16 14:40+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: account_receipt_payment
+#: model:ir.model.fields,field_description:account_receipt_payment.field_account_payment__account_id
+#: model:ir.model.fields,field_description:account_receipt_payment.field_account_payment_order_line__account_id
+#: model:ir.model.fields,field_description:account_receipt_payment.field_account_payment_receipt_line__account_id
+msgid "Account"
+msgstr ""
+
+#. module: account_receipt_payment
+#: model:ir.model.fields,field_description:account_receipt_payment.field_account_payment__account_type_ids
+msgid "Account Types Payment Filter"
+msgstr ""
+
+#. module: account_receipt_payment
+#: model:ir.model.fields,field_description:account_receipt_payment.field_account_payment_order_line__amt_total
+msgid "Amount (with Taxes)"
+msgstr ""
+
+#. module: account_receipt_payment
+#: model:ir.model.fields,field_description:account_receipt_payment.field_account_payment_order_line__analytic_account_id
+#: model:ir.model.fields,field_description:account_receipt_payment.field_account_payment_receipt_line__analytic_account_id
+msgid "Analytic Account"
+msgstr "الحساب التحليلي"
+
+#. module: account_receipt_payment
+#: model:ir.model.fields,field_description:account_receipt_payment.field_account_payment_order_line__create_uid
+#: model:ir.model.fields,field_description:account_receipt_payment.field_account_payment_receipt_line__create_uid
+msgid "Created by"
+msgstr "أنشئت بواسطة"
+
+#. module: account_receipt_payment
+#: model:ir.model.fields,field_description:account_receipt_payment.field_account_payment_order_line__create_date
+#: model:ir.model.fields,field_description:account_receipt_payment.field_account_payment_receipt_line__create_date
+msgid "Created on"
+msgstr "أنشئت في"
+
+#. module: account_receipt_payment
+#: model:ir.model.fields,field_description:account_receipt_payment.field_account_payment_order_line__currency_id
+#: model:ir.model.fields,field_description:account_receipt_payment.field_account_payment_receipt_line__currency_id
+msgid "Currency"
+msgstr ""
+
+#. module: account_receipt_payment
+#: model:ir.model.fields,field_description:account_receipt_payment.field_account_payment_order_line__display_name
+#: model:ir.model.fields,field_description:account_receipt_payment.field_account_payment_receipt_line__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: account_receipt_payment
+#: model:ir.model.fields,field_description:account_receipt_payment.field_account_payment_order_line__id
+#: model:ir.model.fields,field_description:account_receipt_payment.field_account_payment_receipt_line__id
+msgid "ID"
+msgstr ""
+
+#. module: account_receipt_payment
+#: model:ir.model.fields,field_description:account_receipt_payment.field_account_payment_order_line____last_update
+#: model:ir.model.fields,field_description:account_receipt_payment.field_account_payment_receipt_line____last_update
+msgid "Last Modified on"
+msgstr "اخر تعديل في"
+
+#. module: account_receipt_payment
+#: model:ir.model.fields,field_description:account_receipt_payment.field_account_payment_order_line__write_uid
+#: model:ir.model.fields,field_description:account_receipt_payment.field_account_payment_receipt_line__write_uid
+msgid "Last Updated by"
+msgstr "اخر تحديث من قبل"
+
+#. module: account_receipt_payment
+#: model:ir.model.fields,field_description:account_receipt_payment.field_account_payment_order_line__write_date
+#: model:ir.model.fields,field_description:account_receipt_payment.field_account_payment_receipt_line__write_date
+msgid "Last Updated on"
+msgstr "اخر تحديث في"
+
+#. module: account_receipt_payment
+#: model:ir.model.fields,field_description:account_receipt_payment.field_account_payment_order_line__memo
+#: model:ir.model.fields,field_description:account_receipt_payment.field_account_payment_receipt_line__memo
+msgid "Memo"
+msgstr "البيان"
+
+#. module: account_receipt_payment
+#: model:ir.model.fields,field_description:account_receipt_payment.field_account_payment__non_contact
+msgid "Not a Contact"
+msgstr ""
+
+#. module: account_receipt_payment
+#: code:addons/account_receipt_payment/model/receipt.py:142
+#, python-format
+msgid "Only a draft payment can be posted."
+msgstr ""
+
+#. module: account_receipt_payment
+#: model:ir.model.fields,field_description:account_receipt_payment.field_account_payment__partner_name
+msgid "Partner Name"
+msgstr ""
+
+#. module: account_receipt_payment
+#: model:ir.model.fields,field_description:account_receipt_payment.field_account_payment_order_line__payment_id
+#: model:ir.model.fields,field_description:account_receipt_payment.field_account_payment_receipt_line__payment_id
+msgid "Payment"
+msgstr ""
+
+#. module: account_receipt_payment
+#: model:ir.model.fields,field_description:account_receipt_payment.field_account_payment__amount
+#: model:ir.model.fields,field_description:account_receipt_payment.field_account_payment_order_line__amount
+#: model:ir.model.fields,field_description:account_receipt_payment.field_account_payment_receipt_line__amount
+msgid "Payment Amount"
+msgstr ""
+
+#. module: account_receipt_payment
+#: model:ir.model,name:account_receipt_payment.model_account_payment_order_line
+msgid "Payment Lines"
+msgstr "اطراف القبض"
+
+#. module: account_receipt_payment
+#: model_terms:ir.ui.view,arch_db:account_receipt_payment.view_payment_form_inh
+msgid "Payment Order Information"
+msgstr "معلومات سند الصرف"
+
+#. module: account_receipt_payment
+#: model:ir.model,name:account_receipt_payment.model_account_payment
+msgid "Payments"
+msgstr ""
+
+#. module: account_receipt_payment
+#: code:addons/account_receipt_payment/model/receipt.py:169
+#: code:addons/account_receipt_payment/model/receipt.py:174
+#, python-format
+msgid "Please fill the table!"
+msgstr ""
+
+#. module: account_receipt_payment
+#: model_terms:ir.ui.view,arch_db:account_receipt_payment.view_payment_form_inh
+msgid "Receipt Information"
+msgstr "معلومات القبض"
+
+#. module: account_receipt_payment
+#: model:ir.model,name:account_receipt_payment.model_account_payment_receipt_line
+#: model:ir.model.fields,field_description:account_receipt_payment.field_account_payment__payment_lines
+#: model:ir.model.fields,field_description:account_receipt_payment.field_account_payment__receipt_lines
+msgid "Receipt Lines"
+msgstr "اطراف القبض"
+
+#. module: account_receipt_payment
+#: model:ir.model.fields,field_description:account_receipt_payment.field_account_payment_order_line__tax_id
+#: model_terms:ir.ui.view,arch_db:account_receipt_payment.view_payment_form_inh
+msgid "Tax Applied"
+msgstr ""
+
+#. module: account_receipt_payment
+#: code:addons/account_receipt_payment/model/receipt.py:30
+#, python-format
+msgid "The payment amount cannot be negative or zero."
+msgstr ""
+
+#. module: account_receipt_payment
+#: code:addons/account_receipt_payment/model/receipt.py:145
+#, python-format
+msgid "The payment cannot be processed because the invoice is not open!"
+msgstr ""
+
+#. module: account_receipt_payment
+#: model_terms:ir.ui.view,arch_db:account_receipt_payment.view_payment_form_inh
+msgid "Total"
+msgstr ""
+
+#. module: account_receipt_payment
+#: model:ir.model.fields,help:account_receipt_payment.field_account_payment_order_line__amt_total
+msgid "Total amount with taxes"
+msgstr ""
+
+#. module: account_receipt_payment
+#: model_terms:ir.ui.view,arch_db:account_receipt_payment.view_payment_search_inh
+msgid "Without Contact"
+msgstr ""
+
+#. module: account_receipt_payment
+#: code:addons/account_receipt_payment/model/receipt.py:162
+#, python-format
+msgid "You have to define a sequence for %s in your company."
+msgstr ""
+
