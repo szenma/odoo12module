@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<template id="report_invoice_document_inherited"
+			inherit_id="account.report_invoice_document">
+			<xpath expr="//div[@id='qrcode']" position="after">
+				<div class=""  style="width:500px;border: 1px solid gray; padding:10px;display:inline-block;" t-if="o.partner_bank_id"  id="partner_account_informations" >
+					<strong>Bank Details:</strong>
+					<div t-if="o.partner_bank_id.acc_holder_name"
+						name="beneficiary_name">
+						<span>Beneficiary Name:</span>
+						<span class="oe_inline m-0" t-field="o.partner_bank_id.acc_holder_name" />
+					</div>
+					<div t-if="o.partner_bank_id.bank_name"
+						name="bank_name">
+						<span>Bank Name:</span>
+						<span class="m-0" t-field="o.partner_bank_id.bank_name" />
+					</div>
+					<div width="300px"
+ 						t-if="o.partner_bank_id.bank_id and o.partner_bank_id.bank_id.swift_code"
+						name="swift_code">
+						<span>SWIFT Code:</span>
+						<span class="m-0" t-field="o.partner_bank_id.bank_id.swift_code" />
+					</div>
+					<div t-if="o.partner_bank_id.acc_number" name="banck_account_name">
+						<span>IBAN:</span>
+						<span class="m-0" t-field="o.partner_bank_id.acc_number" />
+					</div>
+				</div>
+			</xpath>
+		</template>
+	</data>
+</odoo>
